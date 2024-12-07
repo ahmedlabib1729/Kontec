@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<templates id="template" xml:space="preserve">
+    <!-- Added Widget on order line #T6893-->
+    <div
+        t-name="bad_product_purchase_history.ProductPurchaseHistory"
+        t-att-class="!props.record.data.display_purchase_widget ? 'invisible' : ''"
+        class="o_bad_product_purchase_history_widget"
+    >
+        <a tabindex="0" t-on-click="showPopup" t-attf-class="fa fa-fw fa-clock-o" />
+    </div>
+    <!-- Added information on popover #T6893-->
+    <t t-name="bad_product_purchase_history.ProductPurchaseHistoryPopOver">
+        <div class="p-2">
+            <h6>
+                <strong>Product Purchase History</strong>
+            </h6>
+            <!-- Add style to make table content scrollable #T6893 -->
+            <div
+                class="scrollable-container"
+                style="max-height: 300px; overflow-y: auto;"
+            >
+                <table class="table table-borderless table-sm">
+                    <tbody>
+                        <div name="bad_product_purchase_history_popover">
+                            <t t-if='props.purchaseData'>
+                                <t
+                                    t-foreach="props.purchaseData"
+                                    t-as="info"
+                                    t-key="info_index"
+                                >
+                                    <tr>
+                                        <tr>
+                                            <strong>Vendor:</strong>
+                                            <span t-esc="info['vendor_name']" />
+                                        </tr>
+                                        <tr>
+                                            <strong>Product Quantity:</strong>
+                                            <span t-esc="info['product_qty']" />
+                                        </tr>
+                                        <tr>
+                                            <strong>Unit Price:</strong>
+                                            <span t-esc="info['price_unit']" />
+                                        </tr>
+                                        <tr>
+                                            <strong>Confirmed Date:</strong>
+                                            <span t-esc="info['date_of_purchase']" />
+                                        </tr>
+                                        <br />
+                                    </tr>
+                                </t>
+                                <!-- Add the button to open the purchase history analysis pivot view #T6893-->
+                                <button
+                                    class="text-start btn btn-link"
+                                    type="button"
+                                    t-on-click="openPurchasePivotView"
+                                >
+                                    <i class="oi oi-fw o_button_icon oi-arrow-right" />
+                                    View More
+                                </button>
+                            </t>
+                        </div>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </t>
+</templates>
