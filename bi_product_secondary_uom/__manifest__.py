@@ -21,10 +21,6 @@
         'views/purchase_order_line_view.xml',
         'views/stock_move_view.xml',
     ],
-    'license':'OPL-1',
-    'installable': True,
-    'auto_install': False,
-    'live_test_url':'https://youtu.be/Yp9o8Ose7TM',
-    "images":['static/description/Product-Secondary-UOM-Banner.gif'],
+
 }
 
