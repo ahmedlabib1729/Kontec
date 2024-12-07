@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <template id="no_of_quantity_sale_order_report" inherit_id="sale.report_saleorder_document">
+        <xpath expr="//div[@class='clearfix']" position="after">
+                 <div style="padding-top:20px; padding-bottom:20px;">
+                     <p><span><strong>No. Ordered Quantity: </strong></span><span t-field="doc.order_quantity"/></p>
+                     <p><span><strong>No. Delivered Quantity: </strong></span><span t-field="doc.deliver_quantity"/></p>
+                     <p><span><strong>No. Invoiced Quantity </strong></span><span t-field="doc.invoice_quantity"/></p>
+                </div>
+            </xpath>
+    </template>
+</odoo>

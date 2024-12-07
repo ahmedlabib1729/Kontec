@@ -1,0 +1,16 @@
+<odoo>
+    <record id="purchase_order_form_view_for_po_weight" model="ir.ui.view">
+        <field name="name">purchase.order.form.for.po.weight</field>
+        <field name="model">purchase.order</field>
+        <field name="inherit_id" ref="purchase.purchase_order_form"/>
+        <field name="arch" type="xml">
+            <xpath expr="//field[@name='order_line']/list/field[@name='product_qty']" position="before">
+                <field name="product_weight"/>
+                <field name="product_uom"/>
+            </xpath>
+            <xpath expr="//group[hasclass('oe_subtotal_footer')]" position="inside">
+                <field name="total_weight" class="oe_subtotal_footer_separator"/>
+            </xpath>
+        </field>
+    </record>
+</odoo>
