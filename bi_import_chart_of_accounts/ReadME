@@ -1,0 +1,5 @@
+Date: 30/01/2024
+Version: 17.0.0.1
+    - Fixed Rule access_import_chart_account has no group issue
+
+17.0.0.2 ==> Added boolean field in account.account and also chnages in create_chart_accounts method.
