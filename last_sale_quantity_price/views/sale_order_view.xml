@@ -1,0 +1,31 @@
+<odoo>
+    <record id="view_quotation_form_sale_order_extended" model="ir.ui.view">
+        <field name="name">sale.order.form</field>
+        <field name="model">sale.order</field>
+        <field name="inherit_id" ref="sale.view_order_form"/>
+        <field name="arch" type="xml">
+            <xpath expr="//page[@name='order_lines']/field[@name='order_line']/list/field[@name='product_uom_qty']"
+                   position="after">
+                <field name="last_purchase_qty"/>
+            </xpath>
+            <xpath expr="//page[@name='order_lines']/field[@name='order_line']/list/field[@name='price_unit']"
+                   position="after">
+                <field name="last_purchase_price"/>
+            </xpath>
+        </field>
+    </record>
+
+    <!-- Inherit Form View to Modify it -->
+    <record id="view_stock_product_tree_free_qty_inherit_view" model="ir.ui.view">
+        <field name="name">view_stock_product_tree_free_qty_inherit_view</field>
+        <field name="model">product.product</field>
+        <field name="inherit_id" ref="product.product_template_tree_view"/>
+        <field name="arch" type="xml">
+
+            <xpath expr="//field[@name='virtual_available']" position="after">
+                <field name="free_qty" optional="show"/>
+            </xpath>
+
+        </field>
+    </record>
+</odoo>
