@@ -1,0 +1,2 @@
+id,name,model_id:id,group_id:id,perm_read,perm_write,perm_create,perm_unlink
+access_sh_auto_sale_workflow,access_sh_auto_sale_workflow,model_sh_auto_sale_workflow,base.group_user,1,1,1,1

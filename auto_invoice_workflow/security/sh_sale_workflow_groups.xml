@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <record id="group_auto_sale_workflow" model="res.groups">
+        <field name="name">Auto sale/Purchase workflow</field>
+        <field name="category_id" ref="base.module_category_hidden" />
+    </record>
+
+    <!-- Multi - Company Rules -->
+    <record id="auto_sale_workflow_comp_rule" model="ir.rule">
+        <field name="name">Auto Sale/Purchase Workflow multi-company</field>
+        <field name="model_id" ref="model_sh_auto_sale_workflow" />
+        <field name="domain_force">['|', ('company_id', '=', False), ('company_id', 'in',
+            company_ids)]</field>
+    </record>
+
+</odoo>

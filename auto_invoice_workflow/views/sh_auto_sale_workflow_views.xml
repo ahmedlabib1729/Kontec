@@ -1,0 +1,93 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<odoo>
+
+    <record id="sh_auto_sale_workflow_view_form" model="ir.ui.view">
+        <field name="name">sh.auto.sale.workflow.view.form</field>
+        <field name="model">sh.auto.sale.workflow</field>
+        <field name="arch" type="xml">
+            <form string="">
+                <sheet>
+                    <div class="oe_title">
+                        <h1>
+                            <field name="name" required="1" default_focus="1" placeholder="Name" />
+                        </h1>
+                    </div>
+                    <group>
+                        <group string="Workflow Option">
+                            <field name="validate_order" />
+                            <field name="force_transfer"
+                                invisible="validate_order == False" />
+                            <field name="create_invoice" />
+                            <field name="validate_invoice"
+                                invisible="create_invoice == False" />
+                            <field name="register_payment"
+                                invisible="create_invoice == False or validate_invoice == False" />
+                            <field name="send_invoice_by_email"
+                                invisible="create_invoice == False or validate_invoice == False" />
+                        </group>
+                        <group>
+                            <field name="sale_journal"
+                                invisible="create_invoice == False"
+                                required="create_invoice == True"
+                                domain="[('type','=',['sale','purchase'])]"
+                                options="{'no_create': True, 'no_create_edit':True}" />
+                            <field name="payment_journal"
+                                invisible="create_invoice == False or validate_invoice == False or register_payment == False"
+                                required="create_invoice == True and validate_invoice == True and register_payment == True"
+                                domain="[('type', 'in', ('bank', 'cash'))]"
+                                options="{'no_create': True, 'no_create_edit':True}" />
+                            <field name="payment_method"
+                                invisible="create_invoice == False and validate_invoice == False and register_payment == False"
+                                required="create_invoice == True and validate_invoice == True and register_payment == True"
+                                domain="[('payment_type', 'in', ['inbound','outbound'])]" />
+                            <field name="company_id" invisible="1" />
+                            <field name="company_id" options="{'no_create': True}"
+                                groups="base.group_multi_company" />
+                            <field name="type"/>
+                        </group>
+                    </group>
+                </sheet>
+            </form>
+        </field>
+    </record>
+
+    <record id="sh_auto_sale_workflow_view_list" model="ir.ui.view">
+        <field name="name">sh.auto.sale.workflow.view.list</field>
+        <field name="model">sh.auto.sale.workflow</field>
+        <field name="arch" type="xml">
+            <list>
+                <field name="name" optional="show" />
+                <field name="validate_order" optional="show" widget="boolean_toggle" />
+                <field name="force_transfer" optional="show" widget="boolean_toggle" />
+                <field name="create_invoice" optional="show" widget="boolean_toggle" />
+                <field name="validate_invoice" optional="show" widget="boolean_toggle" />
+                <field name="register_payment" optional="show" widget="boolean_toggle" />
+                <field name="send_invoice_by_email" optional="show" widget="boolean_toggle" />
+                <field name="sale_journal" optional="show" />
+                <field name="payment_journal" optional="show" />
+                <field name="type" optional="show" />
+                <field name="company_id" optional="show" />
+            </list>
+        </field>
+    </record>
+
+    <record id="sh_auto_sale_workflow_action" model="ir.actions.act_window">
+        <field name="name">Auto Sales Workflow</field>
+        <field name="type">ir.actions.act_window</field>
+        <field name="res_model">sh.auto.sale.workflow</field>
+        <field name="view_mode">list,form</field>
+    </record>
+
+    <menuitem id="sh_auto_sale_workflow_menu"
+        name="Auto Workflow"
+        parent="sale.menu_sale_config"
+        action="sh_auto_sale_workflow_action"
+        sequence="99"
+        groups="auto_invoice_workflow.group_auto_sale_workflow" />
+    <menuitem id="sh_auto_purchase_workflow_menu"
+        name="Auto Workflow"
+        parent="purchase.menu_purchase_config"
+        action="sh_auto_sale_workflow_action"
+        sequence="99"
+        groups="auto_invoice_workflow.group_auto_sale_workflow" />
+</odoo>
