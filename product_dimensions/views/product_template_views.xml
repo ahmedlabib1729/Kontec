@@ -1,0 +1,20 @@
+<odoo>
+    <record id="view_product_template_form_dimensions" model="ir.ui.view">
+        <field name="name">product.template.form.inherit.dimensions</field>
+        <field name="model">product.template</field>
+        <field name="inherit_id" ref="product.product_template_form_view"/>
+        <field name="arch" type="xml">
+            <!-- إضافة تاب جديد -->
+            <xpath expr="//notebook" position="inside">
+                <page string="Dimensions">
+                    <group>
+                        <field name="length_cm"/>
+                        <field name="width_cm"/>
+                        <field name="height_cm"/>
+                        <field name="volume" readonly="1" string="Calculated Volume (cm³)"/>
+                    </group>
+                </page>
+            </xpath>
+        </field>
+    </record>
+</odoo>
