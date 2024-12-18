@@ -8,10 +8,15 @@
             <xpath expr="//notebook" position="inside">
                 <page string="Dimensions">
                     <group>
-                        <field name="length_cm"/>
-                        <field name="width_cm"/>
-                        <field name="height_cm"/>
-                        <field name="volume" readonly="1" string="Calculated Volume (cm³)"/>
+                        <group colspan="2">
+                            <field name="length_cm" string="Length (cm)" help="Length of the product in centimeters"/>
+                            <field name="width_cm" string="Width (cm)" help="Width of the product in centimeters"/>
+                            <field name="height_cm" string="Height (cm)" help="Height of the product in centimeters"/>
+                        </group>
+                        <group>
+                            <field name="volume" readonly="1" string="Calculated Volume (cm³)"
+                                   help="Automatically calculated volume of the product"/>
+                        </group>
                     </group>
                 </page>
             </xpath>
