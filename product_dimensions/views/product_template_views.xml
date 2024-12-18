@@ -4,19 +4,15 @@
         <field name="model">product.template</field>
         <field name="inherit_id" ref="product.product_template_form_view"/>
         <field name="arch" type="xml">
-            <!-- إضافة تاب جديد -->
             <xpath expr="//notebook" position="inside">
                 <page string="Dimensions">
                     <group>
-                        <group colspan="2">
-                            <field name="length_cm" string="Length (cm)" help="Length of the product in centimeters"/>
-                            <field name="width_cm" string="Width (cm)" help="Width of the product in centimeters"/>
-                            <field name="height_cm" string="Height (cm)" help="Height of the product in centimeters"/>
-                        </group>
-                        <group>
-                            <field name="volume" readonly="1" string="Calculated Volume (cm³)"
-                                   help="Automatically calculated volume of the product"/>
-                        </group>
+                        <field name="length_cm"/>
+                        <field name="width_cm"/>
+                        <field name="height_cm"/>
+                        <field name="count" placeholder="Enter count here"/>
+                        <field name="calculated_volume" readonly="1" string="Volume Before Division (cm³)"/>
+                        <field name="volume" readonly="1" string="Final Volume (cm³)"/>
                     </group>
                 </page>
             </xpath>
