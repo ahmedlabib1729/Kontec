@@ -1,0 +1,15 @@
+<?xml version="1.0"?>
+<odoo>
+    <record id="bi_account_payment_inherit_view_form" model="ir.ui.view">
+        <field name="name">bi.account.payment.inherit.form</field>
+        <field name="model">account.payment</field>
+        <field name="inherit_id" ref="account.view_account_payment_form"/>
+        <field name="arch" type="xml">
+            <xpath expr="//field[@name='partner_bank_id']" position="after">
+                <field name="analytic_distribution" widget="analytic_distribution"
+                       groups="analytic.group_analytic_accounting"
+                       readonly = "state != 'draft'"/>
+            </xpath>
+        </field>
+    </record>
+</odoo>

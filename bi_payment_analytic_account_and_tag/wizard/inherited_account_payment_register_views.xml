@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data>
+
+        <record id="account_payment_register_inherited_form_view" model="ir.ui.view">
+            <field name="name">account.payment.register.inherited.wizard.form</field>
+            <field name="model">account.payment.register</field>
+            <field name="inherit_id" ref="account.view_account_payment_register_form"/>
+            <field name="arch" type="xml">
+                <xpath expr="//group[1]" position="after">
+                    <group>
+                        <group>
+                            <field name="analytic_distribution" widget="analytic_distribution"
+                                   groups="analytic.group_analytic_accounting"/>
+                        </group>
+                    </group>
+                </xpath>
+            </field>
+        </record>
+
+    </data>
+</odoo>

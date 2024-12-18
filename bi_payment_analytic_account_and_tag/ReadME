@@ -1,0 +1,7 @@
+Date: 24/01/2024
+Version : 17.0.0.1
+Fix :
+    --> Make some changes in code for odoo.sh
+
+20/09/2024 | 17.0.0.2
+=> Fix the issue where the selected analytic accounts where not available properly in Jounal Items and Entries of payments.
